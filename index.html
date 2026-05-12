@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emie — Portfolio Modèle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      color: #111;
+      background: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+      border-bottom: 1px solid #111;
+    }
+    .hero-photo {
+      background: #1a1a1a;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .hero-photo:hover img { transform: scale(1.03); }
+
+    .hero-info {
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 1px solid #111;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1;
+      letter-spacing: -2px;
+      color: #111;
+    }
+    .hero-title {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 14px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #111;
+      border: 1px solid #111;
+      margin-top: 44px;
+    }
+    .stat { background: #fff; padding: 20px 16px; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 300;
+      color: #111;
+      display: block;
+    }
+    .stat-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .hero-contact { margin-top: 36px; }
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+    .contact-line a { color: #555; text-decoration: none; border-bottom: 1px solid #ddd; }
+    .contact-line a:hover { color: #111; border-color: #111; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      border-bottom: 1px solid #111;
+    }
+    nav a {
+      padding: 16px 28px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      border-right: 1px solid #e8e8e8;
+      transition: background 0.15s;
+    }
+    nav a:hover { background: #f5f5f5; }
+
+    /* ── SECTIONS ── */
+    section { border-bottom: 1px solid #e8e8e8; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 40px 48px 0;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 300;
+      font-style: italic;
+      color: #111;
+    }
+    .section-num {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    /* ── ABOUT ── */
+    .about-body {
+      padding: 28px 48px 52px;
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 52px;
+    }
+    .about-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #444;
+      font-weight: 300;
+    }
+    .about-projects {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .project-pill {
+      background: #f4f4f2;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      padding: 5px 12px;
+    }
+    .about-details {
+      border-left: 1px solid #e0e0e0;
+      padding-left: 36px;
+    }
+    .detail-item { margin-bottom: 18px; }
+    .detail-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 5px;
+    }
+    .detail-value { font-size: 14px; color: #333; font-weight: 400; }
+
+    /* ── GALLERY ── */
+    .gallery-body { padding: 28px 48px 52px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .gallery-item {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+      background: #f0f0f0;
+      cursor: zoom-in;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    /* ── SKILLS ── */
+    .skills-body { padding: 28px 48px 52px; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .tag {
+      border: 1px solid #111;
+      padding: 10px 22px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #111;
+      transition: background 0.15s, color 0.15s;
+    }
+    .tag:hover { background: #111; color: #fff; }
+    .infos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      border-top: 1px solid #e8e8e8;
+      padding-top: 32px;
+    }
+    .info-block .info-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+    .info-block .info-value { font-size: 14px; color: #333; }
+
+    /* ── CONTACT ── */
+    .contact-body {
+      padding: 28px 48px 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      align-items: start;
+    }
+    .contact-intro {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #444;
+      font-weight: 300;
+    }
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; }
+    .contact-card {
+      border: 1px solid #e8e8e8;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .contact-card-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-card-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 4px;
+    }
+    .contact-card-value { font-size: 14px; color: #333; }
+    .contact-card a { color: #333; text-decoration: none; border-bottom: 1px solid #ddd; }
+    .contact-card a:hover { color: #111; border-color: #111; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #111;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: #aaa;
+    }
+    .footer-copy {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.96);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      color: #fff;
+      font-size: 36px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 200;
+      line-height: 1;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-prev, .lightbox-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 48px;
+      cursor: pointer;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+      padding: 16px;
+      font-weight: 200;
+      font-family: 'Raleway', sans-serif;
+      line-height: 1;
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
+    .lightbox-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #555;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { min-height: 300px; }
+      .hero-info { padding: 32px 24px; border-left: none; border-top: 1px solid #111; }
+      .hero-name { font-size: 52px; }
+      nav { flex-wrap: wrap; }
+      nav a { padding: 12px 18px; }
+      .section-header { padding: 28px 24px 0; }
+      .about-body, .contact-body { grid-template-columns: 1fr; padding: 20px 24px 36px; gap: 32px; }
+      .about-details { border-left: none; border-top: 1px solid #e0e0e0; padding-left: 0; padding-top: 24px; }
+      .gallery-body, .skills-body { padding: 20px 24px 36px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <div class="hero">
+    <div class="hero-photo" onclick="openLightbox(0)">
+      <img src="principale.jpg" alt="Emie — photo principale" />
+    </div>
+    <div class="hero-info">
+      <div>
+        <div class="hero-name">Emie</div>
+        <div class="hero-title">Modèle — Mannequin</div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">1m66</span>
+            <span class="stat-label">Hauteur</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">34</span>
+            <span class="stat-label">Confection</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">39</span>
+            <span class="stat-label">Pointure</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">80/64/89</span>
+            <span class="stat-label">Mensurations</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-contact">
+        <div class="contact-line">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:emiechloee@gmail.com">emiechloee@gmail.com</a>
+        </div>
+        <div class="contact-line">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <a href="https://instagram.com/emiechloee" target="_blank">@emiechloee</a>
+        </div>
+        <div class="contact-line">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Nice, Côte d'Azur — France
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#about">À propos</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#competences">Compétences</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section id="about">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title">À propos</div>
+    </div>
+    <div class="about-body">
+      <div>
+        <div class="about-text">
+          Bonjour et bienvenue sur mon book en ligne.<br><br>
+          Basée à Nice et à Vannes (Bretagne), je me déplace si nécessaire partout en France et à l'étranger.
+        </div>
+        <div class="about-projects">
+          <div class="project-pill">Campagne publicitaire</div>
+          <div class="project-pill">E-commerce</div>
+          <div class="project-pill">Défilé</div>
+          <div class="project-pill">Shooting photo/vidéo</div>
+          <div class="project-pill">Figuration</div>
+          <div class="project-pill">Édito</div>
+          <div class="project-pill">Cabine</div>
+        </div>
+      </div>
+      <div class="about-details">
+        <div class="detail-item">
+          <div class="detail-label">Hauteur</div>
+          <div class="detail-value">1m66</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Poitrine</div>
+          <div class="detail-value">80 cm</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Tour de taille</div>
+          <div class="detail-value">64 cm</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Tour de hanches</div>
+          <div class="detail-value">89 cm</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Confection</div>
+          <div class="detail-value">34</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Pointure</div>
+          <div class="detail-value">39</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Yeux</div>
+          <div class="detail-value">Verts / Bleus</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Cheveux</div>
+          <div class="detail-value">Châtains</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Tatouages</div>
+          <div class="detail-value">Aucun</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Piercings</div>
+          <div class="detail-value">Aucun</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Localisation</div>
+          <div class="detail-value">Nice, Côte d'Azur</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PORTFOLIO ═══════════════════════ -->
+  <section id="portfolio">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">Portfolio</div>
+    </div>
+    <div class="gallery-body">
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="photo_1.jpg" alt="Photo 1" />
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="photo_2.jpg" alt="Photo 2" />
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="photo_3.jpg" alt="Photo 3" />
+        </div>
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="photo_4.jpg" alt="Photo 4" />
+        </div>
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <img src="photo_5.jpg" alt="Photo 5" />
+        </div>
+        <div class="gallery-item" onclick="openLightbox(6)">
+          <img src="photo_6.jpg" alt="Photo 6" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ COMPÉTENCES ═══════════════════════ -->
+  <section id="competences">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">Compétences</div>
+    </div>
+    <div class="skills-body">
+      <div class="tags">
+        <div class="tag">Mode</div>
+        <div class="tag">Commercial</div>
+        <div class="tag">Commercial Sport</div>
+        <div class="tag">Artistique</div>
+        <div class="tag">Éditorial</div>
+        <div class="tag">Portrait</div>
+        <div class="tag">Lookbook</div>
+        <div class="tag">Beauté</div>
+        <div class="tag">Lifestyle</div>
+      </div>
+      <div class="infos-grid">
+        <div class="info-block">
+          <div class="info-label">Disponibilité</div>
+          <div class="info-value">Semaine & week-ends</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Zone géographique</div>
+          <div class="info-value">Nice · Vannes · National · International</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Langues</div>
+          <div class="info-value">Français (natif) · Espagnol (excellent) · Anglais (bon niveau) · Italien (notions)</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Type de contrat</div>
+          <div class="info-value">Rémunéré</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">Contact</div>
+    </div>
+    <div class="contact-body">
+      <div class="contact-intro">
+        Vous souhaitez collaborer ou obtenir plus d'informations ? N'hésitez pas à me contacter par email ou via Instagram. Je vous répondrai dans les plus brefs délais.
+      </div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value"><a href="mailto:emiechloee@gmail.com">emiechloee@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Instagram</div>
+            <div class="contact-card-value"><a href="https://instagram.com/emiechloee" target="_blank">@emiechloee</a></div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Localisation</div>
+            <div class="contact-card-value">Nice, Côte d'Azur — France</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer>
+    <div class="footer-name">Emie</div>
+    <div class="footer-copy">Portfolio © 2025</div>
+  </footer>
+
+  <!-- ═══════════════════════ LIGHTBOX ═══════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lb-close">&#x2715;</button>
+    <button class="lightbox-prev" id="lb-prev">&#8592;</button>
+    <img class="lightbox-img" id="lb-img" src="" alt="" />
+    <button class="lightbox-next" id="lb-next">&#8594;</button>
+    <div class="lightbox-counter" id="lb-counter"></div>
+  </div>
+
+  <script>
+    const photos = [
+      'principale.jpg',
+      'photo_1.jpg',
+      'photo_2.jpg',
+      'photo_3.jpg',
+      'photo_4.jpg',
+      'photo_5.jpg',
+      'photo_6.jpg'
+    ];
+
+    let current = 0;
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lb-img');
+    const lbCount = document.getElementById('lb-counter');
+
+    function openLightbox(index) {
+      current = index;
+      lbImg.src = photos[current];
+      lbCount.textContent = (current + 1) + ' / ' + photos.length;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      current = (current - 1 + photos.length) % photos.length;
+      lbImg.src = photos[current];
+      lbCount.textContent = (current + 1) + ' / ' + photos.length;
+    }
+
+    function showNext() {
+      current = (current + 1) % photos.length;
+      lbImg.src = photos[current];
+      lbCount.textContent = (current + 1) + ' / ' + photos.length;
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', showPrev);
+    document.getElementById('lb-next').addEventListener('click', showNext);
+
+    lb.addEventListener('click', function(e) {
+      if (e.target === lb) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')   showPrev();
+      if (e.key === 'ArrowRight')  showNext();
+    });
+  </script>
+
+</body>
+</html>
